@@ -18,6 +18,7 @@
 #train4
 #train5
 
+#apt install libxcb-xinerama0
 opencv-python
 pyqt5
 ultralytics

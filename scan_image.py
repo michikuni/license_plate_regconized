@@ -3,6 +3,7 @@ import time
 import os
 import json
 import cv2
+import requests
 from ultralytics import YOLO
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QPushButton, QLabel, QVBoxLayout,
@@ -50,6 +51,17 @@ class OCRWorker(QThread):
                     rec_texts = ''.join(data['rec_texts'])
                     print(data['rec_texts'])
                     plate = rec_texts if rec_texts else 'Không rõ'
+
+                    url = "http://localhost:8000/api/plate"  # Thay bằng URL thực tế
+                    files = {
+                        'full_image': open("test.jpg", 'rb'),
+                        'plate_image': open("output/license_plate.jpg", 'rb')
+                    }
+                    data = {
+                        'plate_text': plate
+                    }
+                    response = requests.post(url, files=files, data=data)
+                    print(f"📤 Gửi API thành công. Status: {response.status_code}")
 
                     gray = cv2.cvtColor(cropped, cv2.COLOR_BGR2GRAY)
                     rgb = cv2.cvtColor(gray, cv2.COLOR_GRAY2RGB)
@@ -113,7 +125,7 @@ class LicensePlateApp(QMainWindow):
         if self.cap is None:
             url = self.url_input.text().strip()
             if url == "":
-                self.cap = cv2.VideoCapture(1)
+                self.cap = cv2.VideoCapture(0)
             else:
                 self.cap = cv2.VideoCapture(url)
 
