@@ -1,0 +1,26 @@
+#Square detect area with label studio
+#pip install label-studio
+#label-studio start
+#Open Label Studio at http://localhost:8080
+
+#conda create -n yolov8 python=3.10 -y
+#conda activate yolov8
+#pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+#pip install ultralytics
+
+#conda activate yolov8
+#conda env export > yolov8_env.yml
+
+#conda env create -f yolov8_env.yml
+#conda activate yolov8
+
+#train2 yolov8l
+#train4
+#train5
+
+opencv-python
+pyqt5
+ultralytics
+paddleocr
+paddlepaddle
+
