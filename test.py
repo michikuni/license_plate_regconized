@@ -4,7 +4,7 @@ import cv2
 ip_camera_url = 'rtsp://admin:123456@192.168.100.131:554/h265'  # ví dụ với IP Webcam (Android)
 # ip_camera_url = 'rtsp://admin:password@192.168.1.100:554/stream1'  # ví dụ với camera RTSP
 
-cap = cv2.VideoCapture('rtsp://admin:123456@192.168.100.131:554/h265')
+cap = cv2.VideoCapture(0)
 
 if not cap.isOpened():
     print("Không kết nối được camera IP")
